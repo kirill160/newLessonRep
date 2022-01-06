@@ -2,6 +2,8 @@ package Kirill.ArraysSimples;
 
 import java.util.Arrays;
 
+import static Kirill.ArraysSimples.Simples5.createBigArray;
+
 public class Simples4 {
     /*
        Мы вводим число означающее столбик.
@@ -31,17 +33,24 @@ public class Simples4 {
                 { 22, -23,   24,  -25,   26,  -27,   28},
                 {-29,  30,  -31,   32,  -33,   34,  -35}
         };
-        int summ = 0;
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] < 0) {
-                    summ +=1;
-                }
+       int [] array2 = createBigArray(matrix);
+       boolean isSorted = false;
+       int buffer = 0;
+       while (!isSorted){
+           isSorted = true;
+        for (int i = 0; i < array2.length - 1; i++) {
+            if (array2[i] > array2[i + 1]) {
+                isSorted = false;
+                buffer = array2[i];
+                array2[i] = array2[i + 1];
+                array2[i + 1] = buffer;
             }
+        }
+
 
         }
 
-        System.out.println(summ);
+        System.out.println(Arrays.toString(array2));
         //System.out.println(getNegativeOfNumbers(matrix, 5));
     }
 }

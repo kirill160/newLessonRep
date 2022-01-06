@@ -3,6 +3,7 @@ package Kirill.ArraysSimples;
 import java.util.Arrays;
 
 public class Simples5 {
+
     public static void main(String[] args) {
         /*
         взять массив из прошлого задания и отсортировать по возрастанию
@@ -14,25 +15,32 @@ public class Simples5 {
                 {22, -23, 24, -25, 26, -27, 28},
                 {-29, 30, -31, 32, -33, 34, -35}
         };
-        int[] arrays = new int[5 * 7];
-        int crt = 0;
-        for (int i = 0; i < arrays.length; i++) {
-            for (int j = 0; j < arrays.length; j++) {
-                arrays[crt++] = matrix[i][j];
-            }
-            Arrays.sort(arrays);
+        int[] arrays = createBigArray(matrix);
+        Arrays.sort(arrays);
+        for (int i : arrays) {
+            System.out.println(i);
         }
-        for (int i = 0; i < arrays.length; i++) {
-            for (int j = 0; j < arrays.length; j++) {
-                matrix[i][j] = arrays[crt++];
-            }
-            Arrays.sort(arrays);
-        }
-        for (int i = 0; i < matrix.length - 1; i++) {
+        int e = 0;
+        for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                System.out.println(matrix[i][j]);
+                matrix[i][j] = arrays[e++];
             }
 
         }
+        int m = 5;
+
     }
+    public static int [] createBigArray (int [][] matrix ){
+        int[] arrays = new int[35];
+        int e = 0;
+        for (int i = 0; i < matrix.length; i++) {
+            for (int j = 0; j < matrix[i].length; j++) {
+                arrays[e++] = matrix[i][j];
+
+            }
+        }
+
+        return arrays;
+    }
+
 }
